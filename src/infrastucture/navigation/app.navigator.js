@@ -6,18 +6,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "../../components/utility/safe-area.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/map/screens/map.screen";
 
 const TAB_ICON = {
   Restaurant: "ios-restaurant",
   Map: "ios-map",
   Settings: "ios-settings",
 };
-
-const MapScreen = () => (
-  <SafeArea>
-    <Text>Map!</Text>
-  </SafeArea>
-);
 
 const SettingsScreen = () => (
   <SafeArea>
