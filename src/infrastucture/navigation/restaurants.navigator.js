@@ -11,13 +11,11 @@ export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator
       ///headerMode="screen" // todo: fix hiding the header is not workingf..
-      headerMode="none"
-      screenOptions={
-        {
-          // cannot find: ...TransitionPresets.ModalPresenmtationIOS,
-          //headerShown: false,
-        }
-      }
+      //headerMode="none"
+      screenOptions={{
+        // cannot find: ...TransitionPresets.ModalPresenmtationIOS,
+        headerShown: false,
+      }}
     >
       <RestaurantStack.Screen
         name="´Restaurants"
@@ -26,7 +24,7 @@ export const RestaurantsNavigator = () => {
       <RestaurantStack.Screen
         name="RestaurantDetail"
         component={RestaurantDetailScreen}
-      ></RestaurantStack.Screen>
+      />
     </RestaurantStack.Navigator>
   );
 };

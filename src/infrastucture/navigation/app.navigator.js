@@ -43,10 +43,10 @@ export const AppNavigator = () => {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={createScreenOptions}
-          tabBarOptions={{
-            tabBarActiveTintColor: "tomato",
-            tabBarInactiveTintColor: "gray",
-          }}
+          // tabBarOptions={{
+          //   tabBarActiveTintColor: "tomato",
+          //   tabBarInactiveTintColor: "gray",
+          // }}
         >
           <Tab.Screen name="Restaurant" component={RestaurantsNavigator} />
           <Tab.Screen name="Map" component={MapScreen} />
