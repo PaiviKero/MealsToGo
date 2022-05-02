@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -35,19 +34,17 @@ const createScreenOptions = ({ route }) => {
 export const AppNavigator = () => {
   return (
     <>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={createScreenOptions}
-          // tabBarOptions={{
-          //   tabBarActiveTintColor: "tomato",
-          //   tabBarInactiveTintColor: "gray",
-          // }}
-        >
-          <Tab.Screen name="Restaurant" component={RestaurantsNavigator} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <Tab.Navigator
+        screenOptions={createScreenOptions}
+        // tabBarOptions={{
+        //   tabBarActiveTintColor: "tomato",
+        //   tabBarInactiveTintColor: "gray",
+        // }}
+      >
+        <Tab.Screen name="Restaurant" component={RestaurantsNavigator} />
+        <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </>
   );
 };
