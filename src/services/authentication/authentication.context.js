@@ -10,17 +10,25 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
+  firebase.auth().onAuthStateChanged((usr) => {
+    if (usr) {
+      setUser(usr);
+      setIsLoading(false);
+    } else {
+      setUser(null);
+      setIsLoading(false);
+    }
+  });
+
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
       .then((u) => {
         setUser(u);
-        console.log("logins success: " + email + " --- " + password);
         setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
-        console.log(email + " --- " + password);
         setError(e.toString());
       });
   };
@@ -36,14 +44,17 @@ export const AuthenticationContextProvider = ({ children }) => {
       .createUserWithEmailAndPassword(email, password)
       .then((u) => {
         setUser(u);
-        console.log("register success: " + email + " --- " + password);
         setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
-        console.log(email + " --- " + password);
         setError(e.toString());
       });
+  };
+
+  const onLogout = () => {
+    setUser(null);
+    firebase.auth().signOut();
   };
 
   return (
@@ -55,6 +66,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}

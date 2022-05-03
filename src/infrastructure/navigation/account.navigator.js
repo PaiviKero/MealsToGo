@@ -9,8 +9,20 @@ const Stack = createStackNavigator();
 
 export const AccountNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Main" component={AccountScreen} />
-    <Stack.Screen name="Login" component={LoginScreen} />
-    <Stack.Screen name="Register" component={RegisterScreen} />
+    <Stack.Screen
+      name="Main"
+      options={{ headerShown: false }}
+      component={AccountScreen}
+    />
+    <Stack.Screen
+      name="Login"
+      options={{ headerShown: false }}
+      component={LoginScreen}
+    />
+    <Stack.Screen
+      name="Register"
+      options={{ headerShown: false }}
+      component={RegisterScreen}
+    />
   </Stack.Navigator>
 );
