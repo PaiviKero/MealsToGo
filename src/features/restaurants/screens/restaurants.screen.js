@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
@@ -51,6 +52,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           <Text variant="error">{error}</Text>
         </Spacer>
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -60,7 +62,9 @@ export const RestaurantsScreen = ({ navigation }) => {
                 navigation.navigate("RestaurantDetail", { restaurant: item });
               }}
             >
-              <RestaurantInfoCard restaurant={item} />
+              <FadeInView>
+                <RestaurantInfoCard restaurant={item} />
+              </FadeInView>
             </TouchableOpacity>
           );
         }}

@@ -9,6 +9,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Text } from "../../../components/typography/text.component";
 
 import { RestaurantList } from "../../restaurants/components/restaurant-list.styles";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const NoFavouritesArea = styled(SafeArea)`
   align-items: center;
@@ -28,7 +29,9 @@ export const FavouritesScreen = ({ navigation }) => {
                 navigation.navigate("RestaurantDetail", { restaurant: item });
               }}
             >
-              <RestaurantInfoCard restaurant={item} />
+              <FadeInView>
+                <RestaurantInfoCard restaurant={item} />
+              </FadeInView>
             </TouchableOpacity>
           );
         }}
