@@ -4,7 +4,13 @@ const url = require("url");
 
 const addGoogleImage = (restaurant) => {
   const ref = restaurant.photos[0].photo_reference;
-  if (!ref) {
+
+  const isDevelopment =
+    process.env.FIREBASE_DEBUG_MODE === "true" &&
+    (process.env.LOGONSERVER.indexOf("MUSTI") > -1 ||
+      JSON.stringify(process.env).indexOf("Windows") > -1);
+
+  if (!ref || isDevelopment) {
     restaurant.photos = [
       "https://s.tmimgcdn.com/scr/800x500/212900/spoon-and-fork-restaurant-logo_212966-original.png",
     ];
