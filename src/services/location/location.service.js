@@ -1,5 +1,5 @@
 import camelize from "camelize";
-import { host } from "../utils/env";
+import { host } from "../../utils/env";
 
 export const locationRequest = (searchTerm) => {
   return fetch(`${host}/geocode?city=${searchTerm}`)
