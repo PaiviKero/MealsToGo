@@ -11,6 +11,7 @@ import { RestaurantsContextProvider } from "../../services/restaurants/restauran
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { CartContextProvider } from "../../services/cart/cart.context";
+import { colors } from "../theme/colors";
 
 const TAB_ICON = {
   Restaurant: "ios-restaurant",
@@ -25,7 +26,7 @@ const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
     tabBarIcon: ({ focused, size, color }) => {
-      const iconNameFocusChecked = focused ? iconName : iconName + "-outline";
+      const iconNameFocusChecked = focused ? iconName : iconName;
       return <Ionicons name={iconNameFocusChecked} size={size} color={color} />;
     },
   };
@@ -40,10 +41,10 @@ export const AppNavigator = () => {
             <CartContextProvider>
               <Tab.Navigator
                 screenOptions={createScreenOptions}
-                // tabBarOptions={{
-                //   tabBarActiveTintColor: "tomato",
-                //   tabBarInactiveTintColor: "gray",
-                // }}
+                tabBarOptions={{
+                  activeTintColor: colors.brand.primary,
+                  inactiveTintColor: colors.brand.muted,
+                }}
               >
                 <Tab.Screen
                   name="Restaurant"
