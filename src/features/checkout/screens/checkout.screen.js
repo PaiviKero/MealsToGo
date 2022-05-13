@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ScrollView } from "react-native";
-import { List } from "react-native-paper";
+import { List, Divider } from "react-native-paper";
 
 import { Text } from "../../../components/typography/text.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -66,54 +66,59 @@ export const CheckoutScreen = ({ navigation }) => {
         <Spacer position="left" size="medium">
           <Spacer position="top" size="large">
             <Text>Your Order:</Text>
-            <List.Section>
-              {cart.map((item) => {
-                return (
-                  <List.Item title={`${item.item} - ${item.price / 100}`} />
-                );
-              })}
-            </List.Section>
-            <Text>Total: {sum / 100}</Text>
-            <NameInput
-              label="Name"
-              value={name}
-              onChangeText={(t) => {
-                setName(t);
-              }}
-            />
-            <Spacer position="top" size="large">
-              {name.length > 0 && (
-                <CreditCardInput
-                  name={name}
-                  onSuccess={setCard}
-                  onError={() =>
-                    navigation.navigate("CheckoutError", {
-                      error: "Something went wrong processing your credit card",
-                    })
-                  }
+          </Spacer>
+          <List.Section>
+            {cart.map((item, i) => {
+              return (
+                <List.Item
+                  key={`item-${i}`}
+                  title={`${item.item} - ${item.price / 100}`}
                 />
-              )}
-            </Spacer>
-          </Spacer>
-          <Spacer position="top" size="xxl" />
-          <PayButton
+              );
+            })}
+          </List.Section>
+          <Text>Total: {sum / 100}</Text>
+        </Spacer>
+        <Spacer position="top" size="large" />
+        <Divider />
+        <NameInput
+          label="Name"
+          value={name}
+          onChangeText={(t) => {
+            setName(t);
+          }}
+        />
+        <Spacer position="top" size="large">
+          {name.length > 0 && (
+            <CreditCardInput
+              name={name}
+              onSuccess={setCard}
+              onError={() =>
+                navigation.navigate("CheckoutError", {
+                  error: "Something went wrong processing your credit card",
+                })
+              }
+            />
+          )}
+        </Spacer>
+        <Spacer position="top" size="xxl" />
+        <PayButton
+          disabled={isLoading}
+          icon="cash-usd"
+          mode="contained"
+          onPress={onPay}
+        >
+          Pay
+        </PayButton>
+        <Spacer position="top" size="large">
+          <ClearButton
             disabled={isLoading}
-            icon="cash-usd"
+            icon="cart-off"
             mode="contained"
-            onPress={onPay}
+            onPress={clearCart}
           >
-            Pay
-          </PayButton>
-          <Spacer position="top" size="large">
-            <ClearButton
-              disabled={isLoading}
-              icon="cart-off"
-              mode="contained"
-              onPress={clearCart}
-            >
-              Clear Cart
-            </ClearButton>
-          </Spacer>
+            Clear Cart
+          </ClearButton>
         </Spacer>
       </ScrollView>
     </SafeArea>

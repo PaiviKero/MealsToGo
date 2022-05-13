@@ -29,6 +29,14 @@ const createScreenOptions = ({ route }) => {
       const iconNameFocusChecked = focused ? iconName : iconName;
       return <Ionicons name={iconNameFocusChecked} size={size} color={color} />;
     },
+    tabBarActiveTintColor: colors.brand.primary,
+    tabBarInactiveTintColor: colors.brand.muted,
+    tabBarStyle: [
+      {
+        display: "flex",
+      },
+      null,
+    ],
   };
 };
 
@@ -39,13 +47,7 @@ export const AppNavigator = () => {
         <LocationContextProvider>
           <RestaurantsContextProvider>
             <CartContextProvider>
-              <Tab.Navigator
-                screenOptions={createScreenOptions}
-                tabBarOptions={{
-                  activeTintColor: colors.brand.primary,
-                  inactiveTintColor: colors.brand.muted,
-                }}
-              >
+              <Tab.Navigator screenOptions={createScreenOptions}>
                 <Tab.Screen
                   name="Restaurant"
                   options={{ headerShown: false }}

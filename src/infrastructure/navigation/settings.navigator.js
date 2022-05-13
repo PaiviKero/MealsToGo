@@ -13,7 +13,6 @@ const SettingStack = createStackNavigator();
 export const SettingsNavigator = ({ route, navigation }) => {
   return (
     <SettingStack.Navigator
-      headerMode="screen"
       screenOptions={{
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
@@ -22,7 +21,7 @@ export const SettingsNavigator = ({ route, navigation }) => {
         options={{
           header: () => null,
         }}
-        name="Settings"
+        name="SettingsMain"
         component={SettingsScreen}
       />
       <SettingStack.Screen name="Camera" component={CameraScreen} />

@@ -9,14 +9,20 @@ import { CheckoutErrorScreen } from "../../features/checkout/screens/checkout-er
 import { CheckoutSuccessScreen } from "../../features/checkout/screens/checkout-success.screen";
 
 export const CheckoutNavigator = () => (
-  <CheckoutStack.Navigator headerMode="none">
-    <CheckoutStack.Screen name="Checkout" component={CheckoutScreen} />
+  <CheckoutStack.Navigator>
+    <CheckoutStack.Screen
+      name="CheckoutMain"
+      options={{ headerShown: false }}
+      component={CheckoutScreen}
+    />
     <CheckoutStack.Screen
       name="CheckoutSuccess"
+      options={{ headerShown: false }}
       component={CheckoutSuccessScreen}
     />
     <CheckoutStack.Screen
       name="CheckoutError"
+      options={{ headerShown: false }}
       component={CheckoutErrorScreen}
     />
   </CheckoutStack.Navigator>
