@@ -8,6 +8,7 @@ export const restaurantRequest = (location = "37.7749295,-122.4194155") => {
     })
     .catch((err) => {
       console.log("error fetching restaurant data " + err);
+      return err;
     });
 };
 export const restaurantTransform = ({ results = [] }) => {
